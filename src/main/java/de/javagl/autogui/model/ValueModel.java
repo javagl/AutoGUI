@@ -1,0 +1,74 @@
+/*
+ * www.javagl.de - AutoGUI
+ *
+ * Copyright (c) 2014-2018 Marco Hutter - http://www.javagl.de
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+package de.javagl.autogui.model;
+
+
+/**
+ * Interface for classes that own a value. The value can be read and written,
+ * and {@link ValueListener} instances may be attached to be informed about 
+ * changes of the value.
+ *
+ * @param <T> The type of the value
+ */
+public interface ValueModel<T>
+{
+    /**
+     * Returns the current value.
+     * 
+     * @return The current value
+     */
+    T getValue();
+    
+    /**
+     * Set the new value
+     * 
+     * @param newValue The new value
+     */
+    void setValue(T newValue);
+    
+    /**
+     * Returns the type of the value
+     * 
+     * @return The type of the value
+     */
+    Class<?> getValueType();
+    
+    /**
+     * Add the given {@link ValueListener} to be informed when a new 
+     * value is set
+     * 
+     * @param valueListener The {@link ValueListener} to add
+     */
+    void addValueListener(ValueListener<T> valueListener);
+
+    /**
+     * Remove the given {@link ValueListener} 
+     * 
+     * @param valueListener The {@link ValueListener} to remove
+     */
+    void removeValueListener(ValueListener<?> valueListener);
+}
